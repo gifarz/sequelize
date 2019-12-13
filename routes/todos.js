@@ -34,9 +34,6 @@ module.exports = function(app) {
         })
       );
   });
-    // app.get("/todos", function(req, res, next) {
-    //     const { title, description } = req.
-    // })
 
   /* POST todo. */
   app.post("/todos", function(req, res, next) {
