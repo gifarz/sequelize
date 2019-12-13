@@ -18,6 +18,25 @@ module.exports = function(app) {
         })
       );
   });
+  app.get("/todos/:id", function(req, res, next) {
+    model.Todo.findOne({})
+      .then(todos =>
+        res.json({
+          error: false,
+          data: todos
+        })
+      )
+      .catch(error =>
+        res.json({
+          error: true,
+          data: [],
+          error: error
+        })
+      );
+  });
+    // app.get("/todos", function(req, res, next) {
+    //     const { title, description } = req.
+    // })
 
   /* POST todo. */
   app.post("/todos", function(req, res, next) {
@@ -75,9 +94,9 @@ module.exports = function(app) {
 
   /* GET todo listing. */
   /* Delete todo. */
-  app.delete("todos/:id", function(req, res, next) {
+  app.delete("/todos/:id", function(req, res, next) {
     const todo_id = req.params.id;
-
+    
     model.Todo.destroy({
       where: {
         id: todo_id
